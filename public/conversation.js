@@ -8,7 +8,7 @@ $(document).on("click", "#sendbox", function(){
     if(usermessage.trim()!="" && !send){
         send=1;
         $(".userquery").submit();
-        $("#chatlog").append("<div class=\"chat-load\"><div class=\"from-user\"><div class=\"inner-message\"><p>"+usermessage+"</p></div></div></div>");
+        $("#chatlog").append("<div class=\"chat-load\"><div class=\"from-user\"><div class=\"inner-message\"><p>"+usermessage.trim()+"</p></div></div></div>");
         $("#chatlog").scrollTop($("#chatlog")[0].scrollHeight);
         executeFunction();
         $(".userquery").val("");
