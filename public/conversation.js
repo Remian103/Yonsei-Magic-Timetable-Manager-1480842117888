@@ -10,7 +10,7 @@ $(document).on("click", "#sendbox", function(){
         $(".userquery").submit();
         $("#chatlog").append("<div class=\"chat-load\"><div class=\"from-user\"><div class=\"inner-message\"><p>"+usermessage.trim()+"</p></div></div></div>");
         $("#chatlog").scrollTop($("#chatlog")[0].scrollHeight);
-        executeFunction();
+        executeFunction(false);
         $(".userquery").val("");
         $(".botimg:last").css({
             "-moz-animation-name":"rotatebox",
@@ -50,7 +50,8 @@ function watson(data) {
 function courseblock(coursedata,val){
     send=0;
     var pdata = $.parseJSON(coursedata);
-    var watsonmessage = "There are " +(pdata.docs.length-val)+" results for you. If you want to view more, tell me.";
+    var len = val+10; if(len>pdata.docs.length) len = pdata.docs.length;
+    var watsonmessage = "Showing "+(val/10*10+1)+"-"+len+" results out of " +(pdata.docs.length)+ " results. If you want to view more, tell me."; 
     $("#chatlog").append("<div class=\"chat-load\"><div class=\"from-bot\"><img class=\"botimg\" src=\"bot.png\"><div class=\"inner-message\"><p>"+watsonmessage+"</p></div></div></div>");
     for(var i=val; i<pdata.docs.length && i<val+10; i++){
         $(".inner-message:last").append("<a href=\""+pdata.docs[i].url+"\"><span class=\"coursebox\">"+pdata.docs[i].course+"</span></a>");
