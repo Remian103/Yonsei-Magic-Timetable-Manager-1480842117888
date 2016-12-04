@@ -1,0 +1,8 @@
+applications:
+- path: .
+  memory: 256M
+  instances: 1
+  domain: mybluemix.net
+  name: Yonsei Magic Timetable Manager
+  host: ymt-manager
+  disk_quota: 1024M
