@@ -54,7 +54,7 @@ function courseblock(coursedata,val){
     var watsonmessage = "Showing "+(val/10*10+1)+"-"+len+" results out of " +(pdata.docs.length)+ " results. If you want to view more, tell me."; 
     $("#chatlog").append("<div class=\"chat-load\"><div class=\"from-bot\"><img class=\"botimg\" src=\"bot.png\"><div class=\"inner-message\"><p>"+watsonmessage+"</p></div></div></div>");
     for(var i=val; i<pdata.docs.length && i<val+10; i++){
-        $(".inner-message:last").append("<a href=\""+pdata.docs[i].url+"\"><span class=\"coursebox\">"+pdata.docs[i].course+"</span></a>");
+        $(".inner-message:last").append("<a href=\""+pdata.docs[i].url+"\" target=\"_blank\"><span class=\"coursebox\">"+pdata.docs[i].course+"</span></a>");
     }
     $("#chatlog").scrollTop($("#chatlog")[0].scrollHeight);
     if(val+10 < pdata.docs.length) return val+10;
