@@ -92,6 +92,7 @@ function courseinfo(userinfo, data) {
         if(getAttri[9]) $("p:last").append("<p>Syllabus(link): <a href=\""+pdata.docs[i].url+"\">" +pdata.docs[i].course+ "</a></p>");
         $("p:last").after("</span>");
     }
+    $("#chatlog").scrollTop($("#chatlog")[0].scrollHeight);
 }
 
 function categorizing(data){
@@ -103,6 +104,7 @@ function categorizing(data){
         watsonString += ", " + pdata.docs[0].major[i];
     }
     $("#chatlog").append("<div class=\"chat-load\"><div class=\"from-bot\"><img class=\"botimg\" src=\"bot.png\"><div class=\"inner-message\"><p>There are " + watsonString + " in " + pdata.docs[0].college + ".</p></div></div></div>");
+    $("#chatlog").scrollTop($("#chatlog")[0].scrollHeight);
 }
 
 function mileageinfo(guess, data) {
@@ -117,4 +119,5 @@ function mileageinfo(guess, data) {
       else suitability= "insufficient"; //부적합
       $("#chatlog").append("<div class=\"chat-load\"><div class=\"from-bot\"><img class=\"botimg\" src=\"bot.png\"><div class=\"inner-message\"><p>I think " + guess + " mileage point is " + suitability + " if you mean " + pdata.docs[i].course + " by " + pdata.docs[i].professor + " on " + pdata.docs[i].time + ". The mileage cut in 2016-1 was " + real + ".</p></div></div></div>");
     }
+    $("#chatlog").scrollTop($("#chatlog")[0].scrollHeight);
 }
