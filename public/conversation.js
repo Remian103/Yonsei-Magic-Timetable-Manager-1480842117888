@@ -80,16 +80,16 @@ function courseinfo(userinfo, data) {
     }
     console.log(pdata.docs[0].course);
     for(var i=0; i<pdata.docs.length; i++){
-        $(".inner-message:last").append("<span class=\"coursebox\"><p>Course name: "+pdata.docs[i].course+"</p>");
+        $(".inner-message:last").append("<span class=\"courseinfobox\"><p>Course name: "+pdata.docs[i].course+"</p>");
         if(getAttri[1]) $("p:last").after("<p>Professor: "+pdata.docs[i].professor+"</p>");
         if(getAttri[3]) $("p:last").after("<p>Category: "+pdata.docs[i].category.college+ ", " +pdata.docs[i].category.major+ "</p>");
         if(getAttri[2]) $("p:last").after("<p>Time: "+pdata.docs[i].time+"</p>");
         if(getAttri[4]) $("p:last").after("<p>Weight: "+pdata.docs[i].weight+"</p>");
         if(getAttri[5]) $("p:last").after("<p>Credit: "+pdata.docs[i].credit+"</p>");
         if(getAttri[6]) $("p:last").after("<p>P/NP: "+pdata.docs[i].pnp+"</p>");
-        if(getAttri[7]) $("p:last").after("<p>Mileage cut: "+pdata.docs[i].mileage+"</p>");
-        if(getAttri[8]) $("p:last").after("<p>Rating: "+pdata.docs[i].mileage+" star points</p>");
-        if(getAttri[9]) $("p:last").append("<p>Syllabus(link): <a href=\""+pdata.docs[i].url+"\">" +pdata.docs[i].course+ "</a></p>");
+        if(getAttri[8]) $("p:last").after("<p>Mileage cut: "+pdata.docs[i].mileage+"</p>");
+        if(getAttri[9]) $("p:last").after("<p>Rating: "+pdata.docs[i].rating+" star points</p>");
+        if(getAttri[7]) $("p:last").append("<p>Syllabus(link): <a href=\""+pdata.docs[i].url+"\">" +pdata.docs[i].course+ "</a></p>");
         $("p:last").after("</span>");
     }
     $("#chatlog").scrollTop($("#chatlog")[0].scrollHeight);

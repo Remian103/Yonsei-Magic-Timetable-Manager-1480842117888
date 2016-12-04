@@ -344,6 +344,20 @@ p {
     color: #F2F2F2;
 }
 
+.courseinfobox{
+    border: 1px solid black;
+    display: inline-block;
+    border-radius: 10px;
+    vertical-align: top;
+    text-align: left;
+    margin-left: 5px;
+    padding: 10px;
+    -webkit-margin-after: 1em;
+    -webkit-margin-end: 0px;
+    background-color: #011C40;
+    color: #F2F2F2;
+}
+
 
 .courseholder{
     margin-left: 4.2rem;
