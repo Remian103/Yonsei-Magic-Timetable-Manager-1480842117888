@@ -13,7 +13,7 @@
         var docs = {}; // store docs for #show_more
         var executeFunction = function() {
             $.ajax({
-                url: "http://localhost:6002/test",
+                url: "http://ymt-manager.mybluemix.net/test",
                 type: "post",
                 contentType: "application/x-www-form-urlencoded",
                 dataType: "text",
@@ -56,7 +56,7 @@
         }
         var getDocument = function() {
             $.ajax({
-                url: "http://localhost:6002/docs",
+                url: "http://ymt-manager.mybluemix.net/docs",
                 type: "post",
                 contentType: "application/x-www-form-urlencoded",
                 dataType: "text",
@@ -72,7 +72,7 @@
         }
         var getInformation = function() {
             $.ajax({
-                url: "http://localhost:6002/info",
+                url: "http://ymt-manager.mybluemix.net/info",
                 type: "post",
                 contentType: "application/x-www-form-urlencoded",
                 dataType: "text",
@@ -86,7 +86,7 @@
         }
         var Categorization = function() {
             $.ajax({
-                url: "http://localhost:6002/cate",
+                url: "http://ymt-manager.mybluemix.net/cate",
                 type: "post",
                 contentType: "application/x-www-form-urlencoded",
                 dataType: "text",
@@ -100,7 +100,7 @@
         }
         var determineMileage = function() {
             $.ajax({
-                url: "http://localhost:6002/mileage",
+                url: "http://ymt-manager.mybluemix.net/mileage",
                 type: "post",
                 contentType: "application/x-www-form-urlencoded",
                 dataType: "text",
