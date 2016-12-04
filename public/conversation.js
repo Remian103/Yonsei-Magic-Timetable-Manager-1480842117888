@@ -56,6 +56,7 @@ function courseblock(coursedata,val){
     for(var i=val; i<pdata.docs.length && i<val+10; i++){
         $(".inner-message:last").append("<a href=\""+pdata.docs[i].url+"\"><span class=\"coursebox\">"+pdata.docs[i].course+"</span></a>");
     }
+    $("#chatlog").scrollTop($("#chatlog")[0].scrollHeight);
     if(val+10 < pdata.docs.length) return val+10;
     else return 0;
 }
