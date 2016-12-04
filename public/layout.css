@@ -331,7 +331,7 @@ p {
 }
 
 .coursebox{
-    border: 1px solid black;
+    border-style: none;
     display: inline-block;
     border-radius: 10px;
     vertical-align: top;
@@ -344,8 +344,23 @@ p {
     color: #F2F2F2;
 }
 
+.coursebox:hover{
+    border-style: none;
+    display: inline-block;
+    border-radius: 10px;
+    vertical-align: top;
+    text-align: center;
+    margin-left: 5px;
+    padding: 10px;
+    -webkit-margin-after: 1em;
+    -webkit-margin-end: 0px;
+    background-color: #1a415b;
+    color: black;
+    transition: 0.4s;
+}
+
 .courseinfobox{
-    border: 1px solid black;
+    border-style: none;
     display: inline-block;
     border-radius: 10px;
     vertical-align: top;
@@ -356,6 +371,15 @@ p {
     -webkit-margin-end: 0px;
     background-color: #011C40;
     color: #F2F2F2;
+}
+
+.courseinfobox a{
+	color: #F2F2F2;	
+}
+
+.courseinfobox a:hover{
+	color: #dadada;
+	transition: 0.4s;
 }
 
 
