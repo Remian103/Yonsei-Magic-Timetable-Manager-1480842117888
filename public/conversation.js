@@ -91,7 +91,7 @@ function courseinfo(userinfo, data) {
         if(getAttri[6]) $("p:last").after("<p>P/NP: "+pdata.docs[i].pnp+"</p>");
         if(getAttri[8]) $("p:last").after("<p>Mileage cut: "+pdata.docs[i].mileage+"</p>");
         if(getAttri[9]) $("p:last").after("<p>Rating: "+pdata.docs[i].rating+" star points</p>");
-        if(getAttri[7]) $("p:last").append("<p>Syllabus(link): <a href=\""+pdata.docs[i].url+"\">" +pdata.docs[i].url+ "</a></p>");
+        if(getAttri[7]) $("p:last").append("<p>Syllabus(link): <a href=\""+pdata.docs[i].url+"\" target=\"_blank\">" +pdata.docs[i].url+ "</a></p>");
         $("p:last").after("</span>");
     }
     $("#chatlog").scrollTop($("#chatlog")[0].scrollHeight);
