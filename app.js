@@ -267,7 +267,7 @@ function findCourse(ficd) {
    		if(ficd.time.condition=="include")
       		obj.push({time:{"$in":ficd.time.array}});
    		else
-      		obj.push({time:{"$nor":ficd.time.array}});
+      		obj.push({time:{"$not":{"$in":ficd.time.array}}});
 	}
 	return obj;
 }
