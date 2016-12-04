@@ -361,7 +361,7 @@ p {
 
 .courseinfobox{
     border-style: none;
-    display: inline-block;
+    display: block;
     border-radius: 10px;
     vertical-align: top;
     text-align: left;
