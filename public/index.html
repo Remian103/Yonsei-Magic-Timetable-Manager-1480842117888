@@ -11,14 +11,17 @@
         var output = "";
         var show_more = [false, 0]; // trigger of show more
         var docs = {}; // store docs for #show_more
-        var executeFunction = function() {
+        var executeFunction = function(bool) {
+            var input;
+            if(bool) input = $(".userquery").val();
+            else input = $(".userquery").val().trim();
             $.ajax({
                 url: "http://ymt-manager.mybluemix.net/test",
                 type: "post",
                 contentType: "application/x-www-form-urlencoded",
                 dataType: "text",
                 data: {
-                    input_sentence: $(".userquery").val().trim(),
+                    input_sentence: input,
                     cur_context: JSON.stringify(context, null, 2)
                 },
                 success: function(data) {
@@ -115,8 +118,7 @@
                 }
             });
         }
-
-        executeFunction();
+        executeFunction(true);
     </script>
     <script src="conversation.js"></script>
     <script src="dynamiccontents.js"></script>

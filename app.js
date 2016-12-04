@@ -37,13 +37,11 @@ app.use(express.static("public"));
 
 
 
-
-
 //connect to cloudant
 var Cloudant = require('cloudant');
 var cloudant = Cloudant({account:"80cb3b05-a31c-4abd-a20b-faeb33469db5-bluemix", password:"35419efd486c69b2683d986424d38a04d09184add9861e9a2141bbb4f5a0e66f"});
-var db = cloudant.db.use('course_db');
-var db_categorize = cloudant.db.use('categorize');
+var db = cloudant.db.use('course_db'); // common db
+var db_categorize = cloudant.db.use('categorize'); // special db for 'categorize'
 
 
 //watson conversation
@@ -75,13 +73,11 @@ app.post("/test", function(req,res){
 	});
 });
 
-function updateMessage(response) {
-	var data = [];
-
+function updateMessage(response) { // usually update the context about response
 	var node = response.context.system.dialog_stack[0].dialog_node;
 	console.log(node);
 
-	if(node == "node_1_1480802373533") { // multiple attribute process
+	if(node == "node_1_1480802373533") { // multiple attribute process (ask information)
 		var attribute = [];
 		for(var i = 0; i < response.entities.length; i++) {
 			if(response.entities[i].entity == "attribute") {
@@ -90,7 +86,7 @@ function updateMessage(response) {
 		}
 		response.context.ask_information.attribute = attribute;
 	}
-	if(response.output.text == "call ask_information data") { // multiple attribute process
+	if(response.output.text == "call ask_information data") { // multiple attribute process (ask information)
 		var attribute = [];
 		for(var i = 0; i < response.entities.length; i++) {
 			if(response.entities[i].entity == "attribute") {
@@ -174,7 +170,7 @@ function updateMessage(response) {
 
 //for finding courses.
 app.post("/docs", function(req,res){
-	var obj = findCourse(JSON.parse(req.body.cur_context));
+	var obj = findCourse(JSON.parse(req.body.cur_context)); // findCourse : make selector for query
 	console.log(JSON.stringify({"obj":obj},null,2));
 	db.find({selector:{"$and":obj}}, function(err, result) {
   		if (err)
@@ -228,6 +224,7 @@ app.post("/mileage", function(req,res){
 	}); 
 });
 
+// making selector value for finding courses
 function findCourse(ficd) {
 	var obj = [];
 	if(ficd.professor!="all")
@@ -274,57 +271,3 @@ function findCourse(ficd) {
 	}
 	return obj;
 }
-
-
-
-
-
-//document conversion
-var fs = require("fs");
-var multer = require("multer");
-
-const document_conversion = watson.document_conversion({
-  username: 'a51ca65e-776c-42e8-bb5b-4480d952e1c0',
-  password: 'mlo67ua6vBXB',
-  version: 'v1',
-  version_date: '2015-12-15'
-});
-
-// custom configuration
-var config = {
-	word: {
-		heading: {
-			fonts: [
-				{ level: 1, min_size: 24 },
-				{ level: 2, min_size: 16, max_size: 24 }
-			]
-		}
-	}
-};
-
-app.post("/dc/simpleupload", multer({ dest: "./uploads"}).single("uploadedFile"), function(req,res){
-	console.log(req.file);
-	var originalFileName = req.file.originalname.split(".")[0];
-	var uploadedFileName = req.file.filename;
-	var fileExtension = req.file.originalname.split(".")[1];
-	fs.exists("./uploads/" + uploadedFileName, /*@callback */ function(exists){
-		fs.rename("./uploads/" + uploadedFileName, "./uploads/" + uploadedFileName + "." + fileExtension, function(err){
-  			if(err) {
-  				console.log(err);
-  			} else {
-				document_conversion.convert({
-					file: fs.createReadStream("./uploads/" + uploadedFileName + "." + fileExtension),
-					conversion_target: 'ANSWER_UNITS',
-					// Use a custom configuration.
-					config: config
-					}, function (err, response) {
-					if (err) {
-						console.error(err);
-					} else {
-						res.json(JSON.stringify(response, null, 2));
-					}
-				});
-  			}
-  		});
-	});
-});
