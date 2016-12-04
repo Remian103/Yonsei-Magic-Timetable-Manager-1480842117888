@@ -51,7 +51,9 @@ function courseblock(coursedata,val){
     send=0;
     var pdata = $.parseJSON(coursedata);
     var len = val+10; if(len>pdata.docs.length) len = pdata.docs.length;
-    var watsonmessage = "Showing "+(pdata.docs.length>0)?(val/10*10+1) : 0 + "-" + len + " results out of " +(pdata.docs.length)+ " results. If you want to view more, tell me."; 
+    var sta = val/10*10+1; if(pdata.docs.length==0) sta=0;
+    var watsonmessage = "Showing "+ sta + "-" + len + " results out of " +(pdata.docs.length)+ " results. If you want to view more, tell me.";
+    if(sta==0) watsonmessage = "There is no matching course.";
     $("#chatlog").append("<div class=\"chat-load\"><div class=\"from-bot\"><img class=\"botimg\" src=\"bot.png\"><div class=\"inner-message\"><p>"+watsonmessage+"</p></div></div></div>");
     for(var i=val; i<pdata.docs.length && i<val+10; i++){
         $(".inner-message:last").append("<a href=\""+pdata.docs[i].url+"\" target=\"_blank\"><span class=\"coursebox\">"+pdata.docs[i].course+"</span></a>");
