@@ -18,7 +18,7 @@
                 contentType: "application/x-www-form-urlencoded",
                 dataType: "text",
                 data: {
-                    input_sentence: $(".userquery").val(),
+                    input_sentence: $(".userquery").val().trim(),
                     cur_context: JSON.stringify(context, null, 2)
                 },
                 success: function(data) {
