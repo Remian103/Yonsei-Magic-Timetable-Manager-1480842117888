@@ -1,0 +1,458 @@
+
+ @media screen and (max-width: 411px){
+    .from-user .inner-message{
+    max-width: 300px;
+    }
+    .from-bot .inner-message{
+    max-width: 300px;
+    }
+    #sidebar_query{
+        visibility: hidden;
+    }
+    .nextimg{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 412px) and (max-width: 574px){
+    .from-user .inner-message{
+    max-width: 300px;
+    }
+    .from-bot .inner-message{
+    max-width: 300px;
+    }
+    #sidebar_query{
+        visibility: hidden;
+    }
+    .nextimg{
+        display: none;
+    }
+    
+}
+
+@media screen and (min-width: 575px) and (max-width: 1279px) {
+    .from-user .inner-message{
+    max-width: 300px;
+    }
+    .from-bot .inner-message{
+    max-width: 300px;
+    }
+    #sidebar_query{
+        visibility: hidden;
+    }
+    .nextimg{
+        display: none;
+    }
+}
+
+
+@media screen and (min-width: 1280px) and (max-width: 1650px){
+    .from-user .inner-message{
+        max-width: 500px;
+    }
+    .from-bot .inner-message{
+        max-width: 500px;
+    }
+    #sidebar_query{
+       width: 18%;
+    }
+}
+
+@media screen and (min-width: 1651px){
+    .from-user .inner-message{
+    max-width: 500px;
+    }
+    .from-bot .inner-message{
+    max-width: 500px;
+    }
+    #sidebar_query{
+        width: 20%;
+    }
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#media-411, #media-575, #media-1280, #media-1650, #media-1651{
+    display: none;
+    height: 0px;
+    overflow: hidden;
+}
+
+div {
+  word-wrap: break-word;
+  line-height: 1.25rem;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow:hidden;
+  margin: 0;
+  padding: 0;
+ }
+
+body{
+    background-color: #dadada;
+    background-image: url('tweed.png');
+}
+
+
+header{
+    max-width: 800px;
+    margin: auto;
+    padding-top: 5px;
+	background-color: #011126;
+	text-align:center;
+	height: 130px;
+	position: relative;
+	z-index:20;
+}
+
+section{
+    font-family: Helvetica Neue for IBM, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+	height: 100%;
+	min-height: 100%;
+	margin: -130px 0 -30px 0;
+	position: relative;
+	z-index: 10;
+    position: relative;
+}
+
+
+#sidebar_query{
+    float:left;
+    height: 100%;    
+    background-color: #23292a;
+    position: relative;
+    display: none;
+}
+
+
+.sidebar_title{
+    height: 130px;
+    background-color: #011126;
+    color: #9e9e9e;
+    padding: 40px;
+}
+
+.sidebar_contents{
+    padding: 40px;
+    color: #f2f2f2;
+}
+
+.nextimg{
+    margin: 30px;
+    bottom: 0;
+    z-index: 10000;
+    width: 100px;
+    position: absolute;
+}
+
+footer{
+    max-width: 800px;
+    margin: auto;
+	margin-top: -30px;
+	height: 30px;
+	background-color: #011126;
+	color: white;
+	text-align: center;
+	position: relative;
+	z-index: 10;
+    font-family: koverwatch;
+    font-size: 1.8rem;
+}
+
+#logo{
+    height: 100px;
+	margin: 10px 10px 10px 10px;
+    position: relative;
+}
+
+#contents{
+	padding-top: 130px;
+	padding-bottom: 30px;
+	height: 100%;
+    box-shadow: 0 0 5px 2px #1b1b1b;
+    max-width: 800px;
+    margin: auto;
+}
+
+#chatlog{
+	height: 80%;
+    padding: 1.3rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-image:url('cheap_diagonal_fabric.png');
+    border:none;
+}
+
+.chatload{
+    display: inline-block;
+}
+
+.from-user{
+    text-align:right;
+}
+
+.from-bot{
+    text-align:left;
+    display:inline-block;
+}
+
+.botimg{
+    height: 4.0rem;
+    margin-top: 3px;
+    margin-right: 10px;
+    display:inline-block;
+    vertical-align: top;
+}
+
+
+.from-bot .inner-message{
+    position:relative;
+    color: black;
+    background: white;
+    border-radius: 10px;
+    text-align: left;
+    display: inline-block;
+    margin-right: 2.5rem;
+    min-width: 2.5rem;
+    line-height: 1.3rem;
+    margin-bottom: 1.5rem;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.from-bot .inner-message:after{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0px 20px 15px 0px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    border-color: transparent #FFFFFF;
+    display: block;
+    width: 0;
+    z-index: 1;
+    left: -15px;
+    top: 10px;
+}
+
+.from-user .inner-message{
+    position:relative;
+    color: #f2f2f2;
+    background: #011C40;
+    border-radius: 10px;
+    text-align: left;
+    display: inline-block;
+    margin-left: 2.5rem;
+    min-width: 2.5rem;
+    line-height: 1.3rem;
+    margin-bottom: 1.5rem;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+.from-user .inner-message:after{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0px 0px 15px 20px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    border-color: transparent #001c40;
+    display: block;
+    width: 0;
+    z-index: 1;
+    right: -16px;
+    top: 10px;
+}
+
+#userbox{
+	height: 20%;
+	min-height: 150px;
+	background-color: #f2f2f2;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border:none;
+    position: relative;
+}
+
+#chatbox{
+    display: inline-block;
+    width: 80%;
+    height:100%;
+    padding: 10px;
+    position: relative;
+}
+
+textarea{
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    padding: 7px;
+    font-family: Helvetica Neue for IBM, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    border: 1px solid white;
+    position: relative;
+}
+
+#sendbox{
+    margin-right: 10px;
+    float:right;
+    color:white;
+    background: #011C40;
+    text-align: center;
+    width:18%;
+    height:87%;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+    font-family: koverwatch;
+    font-size: 2.0rem;
+    position: relative;
+}
+
+p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+.coursebox{
+    border: 1px solid black;
+    display: inline-block;
+    border-radius: 10px;
+    vertical-align: top;
+    text-align: center;
+    margin-left: 5px;
+    padding: 10px;
+    -webkit-margin-after: 1em;
+    -webkit-margin-end: 0px;
+    background-color: #011C40;
+    color: #F2F2F2;
+}
+
+
+.courseholder{
+    margin-left: 4.2rem;
+}
+
+@-moz-keyframes rotatebox /*--for firefox--*/{
+
+    from{
+        -moz-transform:rotate(0deg);
+    }       
+    to{
+        -moz-transform:rotate(360deg);
+    }                       
+
+}
+
+@-webkit-keyframes rotatebox /*--for webkit--*/{
+
+    from{
+        -webkit-transform:rotate(0deg);
+    }       
+    to{
+        -webkit-transform:rotate(360deg);
+    }                       
+
+}
+
+@-keyframes rotatebox /*--for webkit--*/{
+
+    from{
+        -webkit-transform:rotate(0deg);
+    }       
+    to{
+        -webkit-transform:rotate(360deg);
+    }
+
+}
+
+@font-face {
+  font-family: 'Helvetica Neue for IBM';
+  src: url('../fonts/light/h-n-light.eot?') format('eot'),
+  url('../fonts/light/h-n-light.woff2') format('woff2'),
+  url('../fonts/light/h-n-light.woff') format('woff'),
+  url('../fonts/light/h-n-light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica Neue for IBM';
+  src: url('../fonts/light-italic/h-n-light-italic.eot?') format('eot'),
+  url('../fonts/light-italic/h-n-light-italic.woff2') format('woff2'),
+  url('../fonts/light-italic/h-n-light-italic.woff') format('woff'),
+  url('../fonts/light-italic/h-n-light-italic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Helvetica Neue for IBM';
+  src: url('../fonts/roman/h-n-roman.eot?') format('eot'),
+  url('../fonts/roman/h-n-roman.woff2') format('woff2'),
+  url('../fonts/roman/h-n-roman.woff') format('woff'),
+  url('../fonts/roman/h-n-roman.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica Neue for IBM';
+  src: url('../fonts/roman-italic/h-n-roman-italic.eot?') format('eot'),
+  url('../fonts/roman-italic/h-n-roman-italic.woff2') format('woff2'),
+  url('../fonts/roman-italic/h-n-roman-italic.woff') format('woff'),
+  url('../fonts/roman-italic/h-n-roman-italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Helvetica Neue for IBM';
+  src: url('../fonts/medium/h-n-medium.eot?') format('eot'),
+  url('../fonts/medium/h-n-medium.woff2') format('woff2'),
+  url('../fonts/medium/h-n-medium.woff') format('woff'),
+  url('../fonts/medium/h-n-medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica Neue for IBM';
+  src: url('../fonts/medium-italic/h-n-medium-italic.eot?') format('eot'),
+  url('../fonts/medium-italic/h-n-medium-italic.woff2') format('woff2'),
+  url('../fonts/medium-italic/h-n-medium-italic.woff') format('woff'),
+  url('../fonts/medium-italic/h-n-medium-italic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Helvetica Neue for IBM';
+  src: url('../fonts/bold/h-n-bold.eot?') format('eot'),
+  url('../fonts/bold/h-n-bold.woff2') format('woff2'),
+  url('../fonts/bold/h-n-bold.woff') format('woff'),
+  url('../fonts/bold/h-n-bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica Neue for IBM';
+  src: url('../fonts/bold-italic/h-n-bold-italic.eot?') format('eot'),
+  url('../fonts/bold-italic/h-n-bold-italic.woff2') format('woff2'),
+  url('../fonts/bold-italic/h-n-bold-italic.woff') format('woff'),
+  url('../fonts/bold-italic/h-n-bold-italic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'koverwatch';
+  src: url('../koverwatch.ttf') format('truetype');
+}

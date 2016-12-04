@@ -1,26 +1,143 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<title>Yonsei Magic Timetable Manager</title>
+	<meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="jquery-ui.css">    
+	<link rel="stylesheet" type="text/css" href="layout.css">
+    <script type="text/javascript" src="jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        var context = {}; // store context
+        var output = "";
+        var show_more = [false, 0]; // trigger of show more
+        var docs = {}; // store docs for #show_more
+        var executeFunction = function() {
+            $.ajax({
+                url: "http://localhost:6002/test",
+                type: "post",
+                contentType: "application/x-www-form-urlencoded",
+                dataType: "text",
+                data: {
+                    input_sentence: $(".userquery").val(),
+                    cur_context: JSON.stringify(context, null, 2)
+                },
+                success: function(data) {
+                    var parsedData = JSON.parse(data);
+                    context = parsedData.context;
+                    if(context.system.dialog_stack[0].dialog_node == "node_9_1480746508840") { // pass the condition "isIncludeCategory"
+                        executeFunction();
+                    } else {
+                        output = parsedData.output.text[0];
+                        if(output == "Ok... wait a second...") { // find courses
+                            show_more = [true, 0];
+                            getDocument();
+                        } else if(output == "(show_more)") { // show more in "find courses"
+                            if(show_more[0]) {
+                                show_more[1] = courseblock(docs,show_more[1]);
+                                if(show_more[1] == 0) show_more[0] = false;
+                            } else {
+                                watson("There is no more left...");
+                            }
+                        } else if(output == "call ask_information data") { // get course information
+                            getInformation();
+                        } else if(output == "call ask_information data no attribute") { // get data about attribute
+                            getInformation();
+                        } else if(output == "data categorize") { // get small categories for one big category
+                            Categorization();
+                        } else if(output == "data of course / mileage") { // determine mileage
+                            determineMileage();
+                        } else { // print message from watson
+                            show_more[0] = false;
+                            watson(output);
+                        }
+                    }
+                }
+            });
+        }
+        var getDocument = function() {
+            $.ajax({
+                url: "http://localhost:6002/docs",
+                type: "post",
+                contentType: "application/x-www-form-urlencoded",
+                dataType: "text",
+                data: {
+                    cur_context: JSON.stringify(context.find_condition, null, 2)
+                },
+                success: function(data) {
+                    docs = data;
+                    show_more[1] = courseblock(data,show_more[1]);
+                    if(show_more[1] == 0) show_more[0] = false;
+                }
+            });
+        }
+        var getInformation = function() {
+            $.ajax({
+                url: "http://localhost:6002/info",
+                type: "post",
+                contentType: "application/x-www-form-urlencoded",
+                dataType: "text",
+                data: {
+                    info: JSON.stringify(context.ask_information, null, 2)
+                },
+                success: function(data) {
+                    courseinfo(context.ask_information,data);
+                }
+            });
+        }
+        var Categorization = function() {
+            $.ajax({
+                url: "http://localhost:6002/cate",
+                type: "post",
+                contentType: "application/x-www-form-urlencoded",
+                dataType: "text",
+                data: {
+                    category: JSON.stringify(context.categorize, null, 2)
+                },
+                success: function(data) {
+                    categorizing(data);
+                }
+            });
+        }
+        var determineMileage = function() {
+            $.ajax({
+                url: "http://localhost:6002/mileage",
+                type: "post",
+                contentType: "application/x-www-form-urlencoded",
+                dataType: "text",
+                data: {
+                    mileage: JSON.stringify(context.determine_mileage, null, 2)
+                },
+                success: function(data) {
+                    mileageinfo(context.determine_mileage.mileage,data);
+                }
+            });
+        }
 
-  <head>
-    <title>NodeJS Starter Application</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="stylesheets/style.css">
-  </head>
+        executeFunction();
+    </script>
+    <script src="conversation.js"></script>
+    <script src="dynamiccontents.js"></script>
+    <script src="jquery-ui.js"></script>
+</head>
+<body>
 
-  <body>
-    <table>
-      <tr>
-        <td style= "width:30%;">
-          <img class = "newappIcon" src="images/newapp-icon.png">
-        </td>
-        <td>
-          <h1 id="message">Hello World!</h1>
-          <p class='description'></p> Thanks for creating a <span class = "blue">NodeJS Starter Application</span>.
-        </td>
-      </tr>
-    </table>
-  </body>
-
+<header>
+	<div id="ymtmanager">
+	<img id="logo" src="logo3.png" alt="logo">
+	</div>
+</header>
+<section>
+    <img src="nexticon2.png" class="nextimg">
+    <div id="sidebar_query"><div class="sidebar_title"><p>Query Example</p></div><div class="sidebar_contents">Here is the query.</div></div>
+	<div id="contents">
+    <div id="chatlog"></div>
+	<div id="userbox">
+		<div id="chatbox"><textarea class="userquery" placeholder="Ask anything about your timetable!"></textarea>
+		</div>
+		<input type="button" id="sendbox" value="SEND"/>
+	</div>
+	</div>
+</section>
+<footer> &copy; ymtmanager </footer>
+</body>
 </html>
