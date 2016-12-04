@@ -39,9 +39,11 @@
                                 watson("There is no more left...");
                             }
                         } else if(output == "call ask_information data") { // get course information
-                            getInformation();
+                            getInformation(false);
+                        } else if(output == "call ask_information data some attribute") { // get data about attribute
+                            getInformation(false);
                         } else if(output == "call ask_information data no attribute") { // get data about attribute
-                            getInformation();
+                            getInformation(true);
                         } else if(output == "data categorize") { // get small categories for one big category
                             Categorization();
                         } else if(output == "data of course / mileage") { // determine mileage
@@ -70,7 +72,7 @@
                 }
             });
         }
-        var getInformation = function() {
+        var getInformation = function(val) {
             $.ajax({
                 url: "http://ymt-manager.mybluemix.net/info",
                 type: "post",
@@ -80,7 +82,8 @@
                     info: JSON.stringify(context.ask_information, null, 2)
                 },
                 success: function(data) {
-                    courseinfo(context.ask_information,data);
+                	if(val) context.ask_information.attribute = ["rating", "course", "professor", "time", "category", "weight", "credit", "pnp", "url", "mileage"];
+                   	courseinfo(context.ask_information,data);
                 }
             });
         }
