@@ -152,6 +152,7 @@ section{
     z-index: 10000;
     width: 100px;
     position: absolute;
+    cursor : pointer;
 }
 
 footer{
@@ -318,6 +319,7 @@ textarea{
     font-family: koverwatch;
     font-size: 2.0rem;
     position: relative;
+    cursor: pointer;
 }
 
 p {
