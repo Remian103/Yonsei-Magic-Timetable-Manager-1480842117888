@@ -40,7 +40,7 @@ app.use(express.static("public"));
 //connect to cloudant
 var Cloudant = require('cloudant');
 var cloudant = Cloudant({account:"80cb3b05-a31c-4abd-a20b-faeb33469db5-bluemix", password:"35419efd486c69b2683d986424d38a04d09184add9861e9a2141bbb4f5a0e66f"});
-var db = cloudant.db.use('course_db'); // common db
+var db = cloudant.db.use('ymt_db'); // common db
 var db_categorize = cloudant.db.use('categorize'); // special db for 'categorize'
 
 
