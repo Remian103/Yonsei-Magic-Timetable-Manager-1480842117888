@@ -155,7 +155,7 @@ function updateMessage(response) { // usually update the context about response
 			}
 		} else {
 			for(var i = 0; i < period.length; i++) {
-				time.array.push("mon"+period[i],"tue"+period[i],"wed"+period[i],"thu"+period[i],"fri"+period[i],"sat"+period[i],"sun"+period[i]);
+				time.array.push("Mon"+period[i],"Tue"+period[i],"Wed"+period[i],"Thu"+period[i],"Fri"+period[i],"Sat"+period[i],"Sun"+period[i]);
 			}
 		}
 
@@ -267,7 +267,7 @@ function findCourse(ficd) {
    		if(ficd.time.condition=="include")
       		obj.push({time:{"$in":ficd.time.array}});
    		else
-      		obj.push({time:{"$not":{"$in":ficd.time.array}}})
+      		obj.push({time:{"$nor":ficd.time.array}});
 	}
 	return obj;
 }
